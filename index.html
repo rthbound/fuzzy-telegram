@@ -30,6 +30,41 @@
       <button disabled={ items.filter(onlyDone).length == 0 } onclick={ removeAllDone }>
       X{ items.filter(onlyDone).length } </button>
     </form>
+    <script>
+      this.items = opts.items
+
+      edit(e) {
+        this.text = e.target.value
+      }
+
+      add(e) {
+        if (this.text) {
+          this.items.push({ title: this.text })
+          this.text = this.input.value = ''
+        }
+      }
+
+      removeAllDone(e) {
+        this.items = this.items.filter(function(item) {
+          return !item.done
+        })
+      }
+
+      // an two example how to filter items on the list
+      whatShow(item) {
+        return !item.hidden
+      }
+
+      onlyDone(item) {
+       return item.done
+      }
+
+      toggle(e) {
+        var item = e.item
+        item.done = !item.done
+        return true
+      }
+    </script>
   </todo>
 
   </head>
@@ -47,6 +82,8 @@
         { title: 'Be nice to people' }
       ]
     })
+
+
     </script>
   </body>
 </html>
