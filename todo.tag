@@ -23,7 +23,7 @@
   <script>
     this.items = opts.items
 
-    edit(e) {
+    function edit(e) {
       this.text = e.target.value
     }
 
